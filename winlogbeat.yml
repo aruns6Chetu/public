@@ -1,0 +1,13 @@
+winlogbeat.event_logs:
+  - name: Application
+    ignore_older: 72h
+  - name: Security
+    ignore_older: 72h
+  - name: System
+    ignore_older: 72h
+logging.to_files: true
+logging.files:
+  path: C:\ProgramData\winlogbeat\Logs
+logging.level: info
+output.elasticsearch:
+  hosts: ["10.0.0.52:9200"]
