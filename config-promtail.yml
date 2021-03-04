@@ -1,0 +1,30 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://10.0.0.51:3100/loki/api/v1/push
+
+scrape_configs:
+- job_name: system
+  static_configs:
+  - targets:
+      - 192.168.25.10
+    labels:
+      job: asterisk_full_Netherlands
+      __path__: /var/log/asterisk/full
+  - targets:
+      - 192.168.25.10
+    labels:
+      job: asterisk_fail2ban_Netherlands
+      __path__: /var/log/asterisk/fail2ban
+  - targets:
+      - 192.168.25.10
+    labels:
+      job: apache_error_Netherlands
+      __path__: /var/log/httpd/error_log
+  - targets:
+      - 192.168.25.10
